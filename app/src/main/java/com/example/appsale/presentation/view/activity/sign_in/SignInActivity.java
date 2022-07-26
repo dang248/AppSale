@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.example.appsale.R;
 
 public class SignInActivity extends AppCompatActivity {
-    int a, b;
+    int a, b, c;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
