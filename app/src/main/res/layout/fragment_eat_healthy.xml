@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.view.fragment.onboard.EatHealthyFragment">
+
+   <ImageView
+       android:src="@drawable/ic_img_onboardding_1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"/>
+    <TextView
+        android:text="Eat Healthy"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:maxWidth="272dp"
+        android:maxLines="2"
+        android:text="Maintaining good health should be the primary focus of everyone."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

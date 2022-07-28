@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_img_onboardding_1.xml" value="0.1" />
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_img_onboardding_2.xml" value="0.1" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/activity_main.xml" value="0.20052083333333334" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/activity_onboarding.xml" value="0.20052083333333334" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/fragment_eat_healthy.xml" value="0.20052083333333334" />
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/fragment_healthy_recipes.xml" value="0.22" />
       </map>
     </option>
   </component>
