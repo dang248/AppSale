@@ -2,7 +2,9 @@ package com.example.appsale.presentation.view.activity.onboard;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -15,19 +17,63 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appsale.R;
+import com.example.appsale.common.AppConstant;
+import com.example.appsale.data.local.AppCache;
+import com.example.appsale.presentation.view.activity.sign_in.SignInActivity;
+import com.example.appsale.presentation.view.activity.splash.SplashActivity;
+import com.example.appsale.presentation.view.adapter.OnboarddingPagerAdapter;
 
 public class OnboardingActivity extends AppCompatActivity {
     LinearLayout btnGetStarted;
     TextView tvRequestLogin;
+    ViewPager2 onboarddingViewPager;
+    OnboarddingPagerAdapter onboarddingPagerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
+        //Initial
+        initial();
 
+        event();
+
+        //Request Login
+        setTextRequestLogin();
+
+
+
+    }
+
+    private void event() {
+        btnGetStarted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nevigateLoginScreen();
+
+            }
+        });
+    }
+
+    private void nevigateLoginScreen(){
+        AppCache.getInstance(OnboardingActivity.this)
+                .setValue(AppConstant.ONBOARD_DING_FIRST_TIME_DISPLAY_KEY, true)
+                .commit();
+        Intent intent = new Intent(this, SignInActivity.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.alpha_fade_in, R.anim.alpha_fade_out);
+
+    }
+    private void initial() {
         btnGetStarted = findViewById(R.id.button_get_started);
         tvRequestLogin = findViewById(R.id.textview_request_login);
-        setTextRequestLogin();
+        onboarddingViewPager = findViewById(R.id.view_pager_onboard_ding);
+
+        onboarddingPagerAdapter = new OnboarddingPagerAdapter(this);
+        onboarddingViewPager.setAdapter(onboarddingPagerAdapter);
     }
+
+
 
     private void setTextRequestLogin(){
         SpannableStringBuilder builder = new SpannableStringBuilder();
@@ -37,7 +83,7 @@ public class OnboardingActivity extends AppCompatActivity {
         builder.setSpan(new ClickableSpan() {
             @Override
             public void onClick(@NonNull View widget) {
-                Toast.makeText(OnboardingActivity.this, "click me", Toast.LENGTH_SHORT).show();
+                nevigateLoginScreen();
             }
 
             @Override

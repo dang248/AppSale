@@ -11,6 +11,7 @@ import com.example.appsale.R;
 import com.example.appsale.common.AppConstant;
 import com.example.appsale.data.local.AppCache;
 import com.example.appsale.presentation.view.activity.onboard.OnboardingActivity;
+import com.example.appsale.presentation.view.activity.sign_in.SignInActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -27,6 +28,9 @@ public class SplashActivity extends AppCompatActivity {
             Intent intent = null;
             if(isFirstTimeDisplay == null || !isFirstTimeDisplay){
                 intent = new Intent(SplashActivity.this, OnboardingActivity.class);
+            }
+            else{
+                intent = new Intent(SplashActivity.this, SignInActivity.class);
             }
             startActivity(intent);
             finish();
