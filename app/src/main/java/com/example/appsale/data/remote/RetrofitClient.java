@@ -5,8 +5,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 import com.example.appsale.common.AppConstant;
-import com.example.appsale29032022.common.AppConstant;
-import com.example.appsale29032022.data.local.AppCache;
+import com.example.appsale.data.local.AppCache;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
