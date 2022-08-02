@@ -14,13 +14,11 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.appsale.R;
 import com.example.appsale.common.AppConstant;
 import com.example.appsale.data.local.AppCache;
 import com.example.appsale.presentation.view.activity.sign_in.SignInActivity;
-import com.example.appsale.presentation.view.activity.splash.SplashActivity;
 import com.example.appsale.presentation.view.adapter.OnboarddingPagerAdapter;
 
 public class OnboardingActivity extends AppCompatActivity {
