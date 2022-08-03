@@ -29,14 +29,14 @@ public class RetrofitClient {
     private Retrofit retrofit;
     private ApiService apiService;
 
-    private RetrofitClient(Context context) {
-        retrofit = createRetrofit(context);
+    private RetrofitClient() {
+        retrofit = createRetrofit();
         apiService = retrofit.create(ApiService.class);
     }
 
-    public static RetrofitClient getInstance(Context context) {
+    public static RetrofitClient getInstance() {
         if (instance == null) {
-            instance = new RetrofitClient(context);
+            instance = new RetrofitClient();
         }
         return instance;
     }
@@ -45,7 +45,7 @@ public class RetrofitClient {
      * Create Instance Retrofit
      * @return Retrofit
      */
-    private Retrofit createRetrofit(Context context) {
+    private Retrofit createRetrofit() {
         HttpLoggingInterceptor logRequest = new HttpLoggingInterceptor();
         logRequest.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -54,20 +54,6 @@ public class RetrofitClient {
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .addInterceptor(logRequest)
-                .addInterceptor(new Interceptor() {
-                    @NonNull
-                    @Override
-                    public Response intercept(@NonNull Chain chain) throws IOException {
-                        String token = (String) AppCache.getInstance(context).getValue(AppConstant.TOKEN_KEY);
-                        if (token != null && !token.isEmpty()) {
-                            Request newRequest  = chain.request().newBuilder()
-                                    .addHeader("Authorization", "Bearer " + token)
-                                    .build();
-                            return chain.proceed(newRequest);
-                        }
-                        return chain.proceed(chain.request());
-                    }
-                })
                 .build();
 
         Gson gson = new GsonBuilder().create();

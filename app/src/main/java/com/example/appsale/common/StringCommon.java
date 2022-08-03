@@ -14,13 +14,5 @@ public class StringCommon {
         return (!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
     }
 
-    /**
-     * Format Currency By 0,000
-     *
-     * @param number int
-     * @return String
-     */
-    public static String formatCurrency(int number) {
-        return new DecimalFormat("#,###").format(number);
-    }
+
 }

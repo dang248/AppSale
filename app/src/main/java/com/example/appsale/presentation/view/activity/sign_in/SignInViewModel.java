@@ -1,6 +1,5 @@
 package com.example.appsale.presentation.view.activity.sign_in;
 
-import android.content.Context;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -12,7 +11,6 @@ import com.example.appsale.data.remote.dto.AppResource;
 import com.example.appsale.data.remote.dto.UserDTO;
 import com.example.appsale.data.repository.AuthenticationRepository;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,14 +21,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by pphat on 7/14/2022.
+ * Created by ldang on 03/08/2022.
  */
 public class SignInViewModel extends ViewModel {
     private final AuthenticationRepository authenticationRepository;
     private MutableLiveData<AppResource<User>> resourceUser;
 
-    public SignInViewModel(Context context) {
-        authenticationRepository = new AuthenticationRepository(context);
+    public SignInViewModel() {
+        authenticationRepository = new AuthenticationRepository();
         if (resourceUser == null) {
             resourceUser = new MutableLiveData<>();
         }
@@ -50,7 +48,6 @@ public class SignInViewModel extends ViewModel {
                         if (response.isSuccessful()) {
                             AppResource<UserDTO> resourceUserDTO = response.body();
                             if (resourceUserDTO != null) {
-                                Log.d("BBB", resourceUserDTO.data.toString());
                                 UserDTO userDTO = resourceUserDTO.data;
                                 resourceUser.setValue(
                                         new AppResource.Success(
@@ -62,24 +59,28 @@ public class SignInViewModel extends ViewModel {
                                                         userDTO.getRegisterDate(),
                                                         userDTO.getToken())));
                             }
-                        } else {
+                        }else {
                             if (response.errorBody() != null) {
                                 try {
                                     JSONObject jsonObjectError = new JSONObject(response.errorBody().string());
-                                    resourceUser.setValue(new AppResource.Error(jsonObjectError.getString("message")));
+                                    //khi đó AppResource có data = null, message = "Lỗi", Status = ERROR
+                                    resourceUser.setValue(new AppResource.Error("Lỗi"));
+                                    Log.d("BBB",jsonObjectError.toString());
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
                             }
-                        }
+
                     }
+                }
 
                     @Override
                     public void onFailure(Call<AppResource<UserDTO>> call, Throwable t) {
-                        resourceUser.setValue(new AppResource.Error(t.getMessage()));
+
                     }
+
                 });
     }
 }
