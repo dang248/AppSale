@@ -6,10 +6,17 @@
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1345" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/background_button_corner_primary.xml" value="0.1" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_email.xml" value="0.1145" />
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_home.xml" value="0.1" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_img_onboardding_1.xml" value="0.1" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_img_onboardding_2.xml" value="0.1" />
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_location.xml" value="0.1075" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_password.xml" value="0.1145" />
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_phone.xml" value="0.1075" />
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_store.xml" value="0.1" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_text_logo.xml" value="0.1145" />
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_user.xml" value="0.1075" />
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/font/nunito_sans_semibold.xml" value="0.19907407407407407" />
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/activity_main.xml" value="0.20052083333333334" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/activity_onboarding.xml" value="0.20052083333333334" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/activity_sign_in.xml" value="0.20052083333333334" />
@@ -17,6 +24,7 @@
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/fragment_eat_healthy.xml" value="0.20052083333333334" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/fragment_healthy_recipes.xml" value="0.22" />
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/layout_item_food.xml" value="0.1" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/layout_loading.xml" value="0.20052083333333334" />
       </map>
     </option>

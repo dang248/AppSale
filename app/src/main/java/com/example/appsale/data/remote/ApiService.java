@@ -1,6 +1,7 @@
 package com.example.appsale.data.remote;
 
 import com.example.appsale.data.remote.dto.AppResource;
+import com.example.appsale.data.remote.dto.FoodDTO;
 import com.example.appsale.data.remote.dto.UserDTO;
 
 
@@ -19,4 +20,9 @@ public interface ApiService {
 
     @POST("user/sign-in")
     Call<AppResource<UserDTO>> signIn(@Body HashMap<String, Object> body);
+    @POST("user/sign-up")
+    Call<AppResource<UserDTO>> signUp(@Body HashMap<String, Object> body);
+
+    @GET("product")
+    Call<AppResource<List<FoodDTO>>> fetchFoods();
 }

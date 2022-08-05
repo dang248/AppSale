@@ -20,10 +20,13 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appsale.R;
+import com.example.appsale.common.AppConstant;
 import com.example.appsale.common.SpannedCommon;
 import com.example.appsale.common.StringCommon;
+import com.example.appsale.data.local.AppCache;
 import com.example.appsale.data.model.User;
 import com.example.appsale.data.remote.dto.AppResource;
+import com.example.appsale.presentation.view.activity.home.HomeActivity;
 import com.example.appsale.presentation.view.activity.sign_up.SignUpActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -55,6 +58,13 @@ public class SignInActivity extends AppCompatActivity {
                     case SUCCESS:
                         Toast.makeText(SignInActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                         layoutLoading.setVisibility(View.GONE);
+                        AppCache.getInstance(SignInActivity.this)
+                                .setValue(AppConstant.TOKEN_KEY, userAppResource.data.getToken())
+                                .commit();
+                        Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        finish();
+                        overridePendingTransition(R.anim.alpha_fade_in, R.anim.alpha_fade_out);
                         break;
                     case LOADING:
                         layoutLoading.setVisibility(View.VISIBLE);
@@ -97,7 +107,7 @@ public class SignInActivity extends AppCompatActivity {
             @NonNull
             @Override
             public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-                return (T) new SignInViewModel();
+                return (T) new SignInViewModel(SignInActivity.this);
             }
         }).get(SignInViewModel.class);
     }

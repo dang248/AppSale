@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.appsale">
+    package="com.example.appsale" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,13 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppSale"
-        tools:targetApi="31">
-        <activity
-            android:name=".presentation.view.activity.sign_up.SignUpActivity"
-            android:exported="false" />
+        tools:targetApi="31" >
         <activity
             android:name=".presentation.view.activity.splash.SplashActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,6 +30,12 @@
         <activity
             android:name=".presentation.view.activity.sign_in.SignInActivity"
             android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.home.HomeActivity"
+            android:exported="false" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

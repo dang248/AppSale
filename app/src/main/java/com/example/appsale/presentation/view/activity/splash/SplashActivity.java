@@ -9,6 +9,7 @@ import android.os.Handler;
 import com.example.appsale.R;
 import com.example.appsale.common.AppConstant;
 import com.example.appsale.data.local.AppCache;
+import com.example.appsale.presentation.view.activity.home.HomeActivity;
 import com.example.appsale.presentation.view.activity.onboard.OnboardingActivity;
 import com.example.appsale.presentation.view.activity.sign_in.SignInActivity;
 
@@ -24,12 +25,17 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             Boolean isFirstTimeDisplay = (Boolean) AppCache.getInstance(SplashActivity.this)
                     .getValue(AppConstant.ONBOARD_DING_FIRST_TIME_DISPLAY_KEY);
-            Intent intent = null;
+            Intent intent ;
             if(isFirstTimeDisplay == null || !isFirstTimeDisplay){
                 intent = new Intent(SplashActivity.this, OnboardingActivity.class);
             }
             else{
-                intent = new Intent(SplashActivity.this, SignInActivity.class);
+                String token = (String) AppCache.getInstance(SplashActivity.this).getValue(AppConstant.TOKEN_KEY);
+                if (token != null && !token.isEmpty()) {
+                    intent = new Intent(SplashActivity.this, HomeActivity.class);
+                } else {
+                    intent = new Intent(SplashActivity.this, SignInActivity.class);
+                }
             }
             startActivity(intent);
             finish();
