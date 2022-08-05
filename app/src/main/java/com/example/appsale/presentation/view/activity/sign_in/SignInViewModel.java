@@ -63,9 +63,10 @@ public class SignInViewModel extends ViewModel {
                             if (response.errorBody() != null) {
                                 try {
                                     JSONObject jsonObjectError = new JSONObject(response.errorBody().string());
+                                    resourceUser.setValue(new AppResource.Error(jsonObjectError.getString("message")));
                                     //khi đó AppResource có data = null, message = "Lỗi", Status = ERROR
-                                    resourceUser.setValue(new AppResource.Error("Lỗi"));
-                                    Log.d("BBB",jsonObjectError.toString());
+//                                    resourceUser.setValue(new AppResource.Error("Lỗi"));
+//                                    Log.d("BBB",jsonObjectError.toString());
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 } catch (IOException e) {
@@ -78,6 +79,7 @@ public class SignInViewModel extends ViewModel {
 
                     @Override
                     public void onFailure(Call<AppResource<UserDTO>> call, Throwable t) {
+                        resourceUser.setValue(new AppResource.Error(t.getMessage()));
 
                     }
 
