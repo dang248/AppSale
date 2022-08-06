@@ -5,24 +5,25 @@ import android.content.Context;
 import com.example.appsale.data.remote.ApiService;
 import com.example.appsale.data.remote.RetrofitClient;
 import com.example.appsale.data.remote.dto.AppResource;
-import com.example.appsale.data.remote.dto.FoodDTO;
+import com.example.appsale.data.remote.dto.OrderDTO;
 
-
-import java.util.List;
+import java.util.HashMap;
 
 import retrofit2.Call;
 
 /**
- * Created by pphat on 7/19/2022.
+ * Created by ldang on 06/08/2022.
  */
-public class FoodRepository {
+public class OrderRepository {
     private ApiService apiService;
 
-    public FoodRepository(Context context) {
+    public OrderRepository(Context context) {
         apiService = RetrofitClient.getInstance(context).getApiService();
     }
 
-    public Call<AppResource<List<FoodDTO>>> fetchFoods() {
-        return apiService.fetchFoods();
+    public Call<AppResource<OrderDTO>> addToCart(String idFood) {
+        HashMap<String,String> body = new HashMap<>();
+        body.put("id_product",idFood);
+        return apiService.addToCart(body);
     }
 }

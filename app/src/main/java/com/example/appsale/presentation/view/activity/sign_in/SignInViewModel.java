@@ -29,7 +29,7 @@ public class SignInViewModel extends ViewModel {
     private MutableLiveData<AppResource<User>> resourceUser;
 
     public SignInViewModel(Context context) {
-        authenticationRepository = new AuthenticationRepository();
+        authenticationRepository = new AuthenticationRepository(context);
         if (resourceUser == null) {
             resourceUser = new MutableLiveData<>();
         }

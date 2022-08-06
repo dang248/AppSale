@@ -29,14 +29,14 @@ public class RetrofitClient {
     private Retrofit retrofit;
     private ApiService apiService;
 
-    private RetrofitClient() {
-        retrofit = createRetrofit();
+    private RetrofitClient(Context context) {
+        retrofit = createRetrofit(context);
         apiService = retrofit.create(ApiService.class);
     }
 
-    public static RetrofitClient getInstance() {
+    public static RetrofitClient getInstance(Context context) {
         if (instance == null) {
-            instance = new RetrofitClient();
+            instance = new RetrofitClient(context);
         }
         return instance;
     }
@@ -44,8 +44,9 @@ public class RetrofitClient {
     /**
      * Create Instance Retrofit
      * @return Retrofit
+     * @param context
      */
-    private Retrofit createRetrofit() {
+    private Retrofit createRetrofit(Context context) {
         HttpLoggingInterceptor logRequest = new HttpLoggingInterceptor();
         logRequest.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -54,6 +55,20 @@ public class RetrofitClient {
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .addInterceptor(logRequest)
+                .addInterceptor(new Interceptor() {
+            @NonNull
+            @Override
+            public Response intercept(@NonNull Chain chain) throws IOException {
+                String token = (String) AppCache.getInstance(context).getValue(AppConstant.TOKEN_KEY);
+                if (token != null && !token.isEmpty()) {
+                    Request newRequest  = chain.request().newBuilder()
+                            .addHeader("Authorization", "Bearer " + token)
+                            .build();
+                    return chain.proceed(newRequest);
+                }
+                return chain.proceed(chain.request());
+            }
+        })
                 .build();
 
         Gson gson = new GsonBuilder().create();

@@ -17,8 +17,8 @@ import retrofit2.Call;
 public class AuthenticationRepository {
     private ApiService apiService;
 
-    public AuthenticationRepository() {
-        apiService = RetrofitClient.getInstance().getApiService();
+    public AuthenticationRepository(Context context) {
+        apiService = RetrofitClient.getInstance(context).getApiService();
     }
 
     public Call<AppResource<UserDTO>> signIn(String email, String password) {

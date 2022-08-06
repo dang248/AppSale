@@ -2,6 +2,7 @@ package com.example.appsale.data.remote;
 
 import com.example.appsale.data.remote.dto.AppResource;
 import com.example.appsale.data.remote.dto.FoodDTO;
+import com.example.appsale.data.remote.dto.OrderDTO;
 import com.example.appsale.data.remote.dto.UserDTO;
 
 
@@ -25,4 +26,7 @@ public interface ApiService {
 
     @GET("product")
     Call<AppResource<List<FoodDTO>>> fetchFoods();
+
+    @POST("cart/add")
+    Call<AppResource<OrderDTO>> addToCart(@Body HashMap<String, String> body);
 }
