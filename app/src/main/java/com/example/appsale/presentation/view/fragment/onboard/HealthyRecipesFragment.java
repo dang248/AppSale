@@ -13,8 +13,6 @@ import com.example.appsale.R;
 
 public class HealthyRecipesFragment extends Fragment {
 
-
-
     public HealthyRecipesFragment() {
         // Required empty public constructor
     }

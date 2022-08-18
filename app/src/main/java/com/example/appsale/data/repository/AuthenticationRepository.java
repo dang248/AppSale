@@ -11,9 +11,7 @@ import java.util.HashMap;
 
 import retrofit2.Call;
 
-/**
- * Created by ldang on 03/08/2022.
- */
+
 public class AuthenticationRepository {
     private ApiService apiService;
 

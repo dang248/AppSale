@@ -15,7 +15,6 @@ public class EatHealthyFragment extends Fragment {
     public EatHealthyFragment() {
         // Required empty public constructor
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -11,9 +11,6 @@ import androidx.annotation.NonNull;
 
 import com.example.appsale.R;
 
-/**
- * Created by ldang on 03/08/2022.
- */
 public class SpannedCommon {
     public static SpannableStringBuilder setClickColorLink(String text, Context context, OnListenClick onListenClick) {
         SpannableStringBuilder builder = new SpannableStringBuilder();

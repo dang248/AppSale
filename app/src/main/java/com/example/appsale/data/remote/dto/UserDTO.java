@@ -1,8 +1,6 @@
 package com.example.appsale.data.remote.dto;
 
-/**
- * Created by pphat on 7/14/2022.
- */
+
 public class UserDTO {
 
     private String email;

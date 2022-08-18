@@ -24,6 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.view.activity.sign_up.SignUpActivity"
+            android:exported="false"/>
         <activity
             android:name=".presentation.view.activity.onboard.OnboardingActivity"
             android:exported="false" />

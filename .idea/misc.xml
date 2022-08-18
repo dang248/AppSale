@@ -6,6 +6,7 @@
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1345" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/background_badge.xml" value="0.107" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/background_button_corner_primary.xml" value="0.1" />
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_acc.xml" value="0.131" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_email.xml" value="0.1145" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_home.xml" value="0.1" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_img_onboardding_1.xml" value="0.1" />
@@ -16,6 +17,8 @@
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_store.xml" value="0.1" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_text_logo.xml" value="0.1145" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/drawable/ic_user.xml" value="0.1075" />
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/font/nunito_sans_extrabold.xml" value="0.23072916666666668" />
+        <entry key="..\:/AndroidProject/AppSale/app/src/main/res/font/nunito_sans_extralight.xml" value="0.23072916666666668" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/font/nunito_sans_semibold.xml" value="0.19907407407407407" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/AndroidProject/AppSale/app/src/main/res/layout/activity_main.xml" value="0.20052083333333334" />

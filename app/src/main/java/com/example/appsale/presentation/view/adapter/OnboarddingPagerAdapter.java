@@ -8,9 +8,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.appsale.presentation.view.fragment.onboard.EatHealthyFragment;
 import com.example.appsale.presentation.view.fragment.onboard.HealthyRecipesFragment;
 
-/**
- * Created by ldang on 7/29/2022.
- */
 public class OnboarddingPagerAdapter extends FragmentStateAdapter {
     private Fragment eatHealthyFragment, healthyRecipesFragment;
 

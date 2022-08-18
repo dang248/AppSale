@@ -12,9 +12,6 @@ import java.util.List;
 
 import retrofit2.Call;
 
-/**
- * Created by pphat on 7/19/2022.
- */
 public class FoodRepository {
     private ApiService apiService;
 

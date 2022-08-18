@@ -20,9 +20,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * Created by ldang on 05/08/2022.
- */
 
     public class SignUpViewModel extends ViewModel {
         private final AuthenticationRepository authenticationRepository;

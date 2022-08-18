@@ -39,9 +39,6 @@ public class OnboardingActivity extends AppCompatActivity {
 
         //Request Login
         setTextRequestLogin();
-
-
-
     }
 
     private void event() {

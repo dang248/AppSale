@@ -11,9 +11,6 @@ import java.util.HashMap;
 
 import retrofit2.Call;
 
-/**
- * Created by ldang on 06/08/2022.
- */
 public class OrderRepository {
     private ApiService apiService;
 

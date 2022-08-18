@@ -14,13 +14,11 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
-/**
- * Created by pphat on 7/14/2022.
- */
 public interface ApiService {
 
     @POST("user/sign-in")
     Call<AppResource<UserDTO>> signIn(@Body HashMap<String, Object> body);
+
     @POST("user/sign-up")
     Call<AppResource<UserDTO>> signUp(@Body HashMap<String, Object> body);
 

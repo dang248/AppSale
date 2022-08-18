@@ -21,9 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * Created by ldang on 03/08/2022.
- */
+
 public class SignInViewModel extends ViewModel {
     private final AuthenticationRepository authenticationRepository;
     private MutableLiveData<AppResource<User>> resourceUser;

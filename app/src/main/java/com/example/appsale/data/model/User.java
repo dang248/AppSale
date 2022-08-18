@@ -1,8 +1,5 @@
 package com.example.appsale.data.model;
 
-/**
- * Created by pphat on 7/14/2022.
- */
 public class User {
     private String email;
     private String name;

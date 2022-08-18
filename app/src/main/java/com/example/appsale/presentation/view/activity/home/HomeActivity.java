@@ -62,6 +62,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
+
         homeViewModel.getOrder().observe(this, (Observer<AppResource<Order>>) orderAppResource -> {
             switch (orderAppResource.status) {
                 case LOADING:
@@ -81,8 +82,12 @@ public class HomeActivity extends AppCompatActivity {
 
     }
     private void events() {
+        //
+        // fetchFoods của homeViewModel để chuyển dữ liệu của
+        // các quán ăn từ class foodDTO qua class Food gồm các dòng lệnh
         homeViewModel.fetchFoods();
-        foodAdapter.setOnItemClickFood(position -> homeViewModel.fetchOrder(foodAdapter.getListFoods().get(position).getId()));
+        foodAdapter.setOnItemClickFood(position -> homeViewModel
+                .fetchOrder(foodAdapter.getListFoods().get(position).getId()));
     }
 
     private void addControls() {

@@ -4,9 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/**
- * Created by pphat on 7/19/2022.
- */
 public class FoodDTO {
     @SerializedName("_id")
     private String id;

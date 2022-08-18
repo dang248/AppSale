@@ -2,9 +2,6 @@ package com.example.appsale.data.model;
 
 import java.util.List;
 
-/**
- * Created by ldang on 06/08/2022.
- */
 public class Order {
 
         private String id;

@@ -19,9 +19,9 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        nevigateToDestination();
+        navigateToDestination();
     }
-    private void nevigateToDestination(){
+    private void navigateToDestination(){
         new Handler().postDelayed(() -> {
             Boolean isFirstTimeDisplay = (Boolean) AppCache.getInstance(SplashActivity.this)
                     .getValue(AppConstant.ONBOARD_DING_FIRST_TIME_DISPLAY_KEY);

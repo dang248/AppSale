@@ -6,9 +6,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/**
- * Created by ldang on 06/08/2022.
- */
 public class OrderDTO {
 
     @SerializedName("_id")

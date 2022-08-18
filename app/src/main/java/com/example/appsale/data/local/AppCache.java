@@ -8,9 +8,6 @@ import com.example.appsale.common.AppConstant;
 
 import java.util.Map;
 
-/**
- * Created by ldang on 7/12/2022.
- */
 public class AppCache {
     private static SharedPreferences sharedPreferences = null;
     private static SharedPreferences.Editor editor = null;

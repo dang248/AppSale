@@ -28,13 +28,13 @@ import retrofit2.Response;
 
 public class HomeViewModel extends ViewModel {
     private final FoodRepository foodRepository;
-    private  final OrderRepository oderRepository;
+    private  final OrderRepository orderRepository;
     private MutableLiveData<AppResource<List<Food>>> resourceFood;
-    private MutableLiveData<AppResource<Order>> orderData = new MutableLiveData<>();
+    private MutableLiveData<AppResource<Order>> orderData ;
 
     public HomeViewModel(Context context) {
         foodRepository = new FoodRepository(context);
-        oderRepository = new OrderRepository(context);
+        orderRepository = new OrderRepository(context);
         if (resourceFood == null) {
             resourceFood = new MutableLiveData<>();
         }
@@ -50,9 +50,55 @@ public class HomeViewModel extends ViewModel {
         return orderData;
     }
 
+    public void fetchFoods() {
+        resourceFood.setValue(new AppResource.Loading(null));
+        Call<AppResource<List<FoodDTO>>> callFoods = foodRepository.fetchFoods();
+        callFoods.enqueue(new Callback<AppResource<List<FoodDTO>>>() {
+            @Override
+            public void onResponse(Call<AppResource<List<FoodDTO>>> call
+                    , Response<AppResource<List<FoodDTO>>> response) {
+                if (response.isSuccessful()) {
+                    //chỉ lấy body không lấy header
+                    AppResource<List<FoodDTO>> foodResponse = response.body();
+                    if (foodResponse.data != null) {
+                        List<Food> listFood = new ArrayList<>();
+                        for (FoodDTO foodDTO : foodResponse.data) {
+                            listFood.add(
+                                    new Food(foodDTO.getId(),
+                                            foodDTO.getName(),
+                                            foodDTO.getAddress(),
+                                            foodDTO.getPrice(),
+                                            foodDTO.getImg(),
+                                            foodDTO.getQuantity(),
+                                            foodDTO.getGallery())
+                            );
+                        }
+                        //kết thúc việc hiển thị layout Loading
+                        resourceFood.setValue(new AppResource.Success<>(listFood));
+                    }
+                } else {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        String message = jsonObject.getString("message");
+                        resourceFood.setValue(new AppResource.Error<>(message));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AppResource<List<FoodDTO>>> call, Throwable t) {
+                resourceFood.setValue(new AppResource.Error<>(t.getMessage()));
+            }
+        });
+    }
+
     public void fetchOrder(String idFood) {
         orderData.setValue(new AppResource.Loading(null));
-        Call<AppResource<OrderDTO>> callOrder = oderRepository.addToCart(idFood);
+        Call<AppResource<OrderDTO>> callOrder = orderRepository.addToCart(idFood);
         callOrder.enqueue(new Callback<AppResource<OrderDTO>>() {
             @Override
             public void onResponse(Call<AppResource<OrderDTO>> call, Response<AppResource<OrderDTO>> response) {
@@ -86,50 +132,6 @@ public class HomeViewModel extends ViewModel {
             @Override
             public void onFailure(Call<AppResource<OrderDTO>> call, Throwable t) {
                 orderData.setValue(new AppResource.Error<>(t.getMessage()));
-            }
-        });
-    }
-
-
-    public void fetchFoods() {
-        resourceFood.setValue(new AppResource.Loading(null));
-        Call<AppResource<List<FoodDTO>>> callFoods = foodRepository.fetchFoods();
-        callFoods.enqueue(new Callback<AppResource<List<FoodDTO>>>() {
-            @Override
-            public void onResponse(Call<AppResource<List<FoodDTO>>> call, Response<AppResource<List<FoodDTO>>> response) {
-                if (response.isSuccessful()) {
-                    AppResource<List<FoodDTO>> foodResponse = response.body();
-                    if (foodResponse.data != null) {
-                        List<Food> listFood = new ArrayList<>();
-                        for (FoodDTO foodDTO : foodResponse.data) {
-                            listFood.add(
-                                    new Food(foodDTO.getId(),
-                                            foodDTO.getName(),
-                                            foodDTO.getAddress(),
-                                            foodDTO.getPrice(),
-                                            foodDTO.getImg(),
-                                            foodDTO.getQuantity(),
-                                            foodDTO.getGallery())
-                            );
-                        }
-                        resourceFood.setValue(new AppResource.Success<>(listFood));
-                    }
-                } else {
-                    try {
-                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
-                        String message = jsonObject.getString("message");
-                        resourceFood.setValue(new AppResource.Error<>(message));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<AppResource<List<FoodDTO>>> call, Throwable t) {
-                resourceFood.setValue(new AppResource.Error<>(t.getMessage()));
             }
         });
     }

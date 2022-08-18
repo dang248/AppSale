@@ -1,6 +1,5 @@
 package com.example.appsale.presentation.view.activity.sign_in;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -30,10 +29,10 @@ import com.example.appsale.presentation.view.activity.home.HomeActivity;
 import com.example.appsale.presentation.view.activity.sign_up.SignUpActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-/**
- * Created by ldang on 02/08/2022.
- */
 public class SignInActivity extends AppCompatActivity {
     SignInViewModel viewModel;
     LinearLayout layoutLoading, btnSignIn;
@@ -77,7 +76,7 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
     }
-
+    List<String> list = Arrays.asList("oo");
     //Dùng phương thức POST để lấy dữ liệu về từ server
     private void event() {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +84,6 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = txtInputEditEmail.getText().toString();
                 String password = txtInputEditPassword.getText().toString();
-
                 if (StringCommon.isValidEmail(email) && !password.isEmpty()) {
                     viewModel.signIn(email, password);
                 }
